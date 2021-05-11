@@ -15,7 +15,7 @@ const apiClient = new midtransClient.Snap({
 
 
 // get status of transaction that already recorded on midtrans (already `charge`-ed) 
-app.post('/mid/:ordercode', (req, res) => {
+app.post('/api/midtrans/status/:ordercode', (req, res) => {
     const id = req.params
     apiClient.transaction.status(id.ordercode)
         .then((response)=>{
@@ -24,6 +24,21 @@ app.post('/mid/:ordercode', (req, res) => {
         })
     // res.send(this.info)
     res.send(this.info)
+})
+
+app.post('/api/midtrans/expire/:ordercode', (req, res) => {
+    const id = req.params
+    apiClient.transaction.expire(id.ordercode)
+        .then((response)=>{
+            console.log(response);
+            this.info = response;
+        })
+    // res.send(this.info)
+    res.send(this.info)
+})
+
+app.get('/test', (req, res) => {
+    res.send('TEST BERHASIL!')  
 })
 
 app.listen(port, () => {
