@@ -26,11 +26,6 @@ app.post('/mid/:ordercode', (req, res) => {
     res.send(this.info)
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello, ini adalah isi dari data midtrans')
-})
-
-
 app.listen(port, () => {
     console.log('Example app listening at http://localhost:${port}')
 })
