@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 2002
+const port = 3002
 
 const midtransClient = require('midtrans-client');
 // Create Core API / Snap instance (both have shared `transactions` methods)
@@ -22,7 +22,6 @@ app.post('/api/midtrans/status/:ordercode', (req, res) => {
             console.log(response);
             this.info = response;
         })
-    // res.send(this.info)
     res.send(this.info)
 })
 
@@ -33,7 +32,6 @@ app.post('/api/midtrans/expire/:ordercode', (req, res) => {
             console.log(response);
             this.info = response;
         })
-    // res.send(this.info)
     res.send(this.info)
 })
 
