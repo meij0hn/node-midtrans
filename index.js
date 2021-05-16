@@ -6,9 +6,6 @@ const midtransClient = require('midtrans-client');
 const app = express()
 const port = 3002
 
-
-
-
 const apiClienRH = new midtransClient.Snap({
         isProduction : true,
         serverKey : 'Mid-server-5SjUm4DPCDKqf_PAMUT2Ht4E',
@@ -20,9 +17,9 @@ app.use(cors())
 	
 
 // get status of transaction that already recorded on midtrans (already `charge`-ed) 
-app.post('/api/midtrans/status/:ordercode', (req, res) => {
+app.post('/api/midtrans/status', (req, res) => {
     const id = req.params
-    apiClienRH.transaction.status(id.ordercode)
+    apiClienRH.transaction.status(req.query.ordercode)
         .then((response)=>{
             console.log(response);
             this.statusinfo = response;
@@ -30,9 +27,9 @@ app.post('/api/midtrans/status/:ordercode', (req, res) => {
     res.json(this.statusinfo)
 })
 
-app.post('/api/midtrans/expire/:ordercode', (req, res) => {
+app.post('/api/midtrans/expire', (req, res) => {
     const id = req.params
-    apiClienRH.transaction.expire(id.ordercode)
+    apiClienRH.transaction.expire(req.query.ordercode)
         .then((response)=>{
             console.log(response);
             this.expireinfo = response;
