@@ -18,23 +18,20 @@ app.use(cors())
 
 // get status of transaction that already recorded on midtrans (already `charge`-ed) 
 app.post('/api/midtrans/status', (req, res) => {
-    const id = req.params
     apiClienRH.transaction.status(req.query.ordercode)
         .then((response)=>{
             console.log(response);
-            this.statusinfo = response;
+            res.json(response);
         })
-    res.json(this.statusinfo)
+    
 })
 
 app.post('/api/midtrans/expire', (req, res) => {
-    const id = req.params
     apiClienRH.transaction.expire(req.query.ordercode)
         .then((response)=>{
             console.log(response);
-            this.expireinfo = response;
+            res.json(response);
         })
-    res.json(this.expireinfo)
 })
 
 app.get('/test', (req, res) => {
