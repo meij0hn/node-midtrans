@@ -12,8 +12,11 @@
   "author": "meijohn",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "midtrans-client": "^1.2.3"
+    "midtrans-client": "^1.2.3",
+    "mssql": "^7.1.0",
+    "tedious": "^11.0.8"
   }
 }
