@@ -1,10 +1,20 @@
 const express = require('express')
 const cors = require('cors')
 const midtransClient = require('midtrans-client');
+const e = require('express');
 // Create Core API / Snap instance (both have shared `transactions` methods)
 
 const app = express()
 const port = 3002
+
+// app.use(function(req, res, next) {
+//     if (!req.headers.authorization) {
+//         return res.status(403).json({ error: 'No credentials sent!' });
+//     } else if (req.headers.authorization != 'Basic Mkt@678!') {
+//         return res.status(403).json({ error: 'Credential incorrect!' });
+//     }
+//     next();
+// });
 
 const apiClienRH = new midtransClient.Snap({
     isProduction : true,
